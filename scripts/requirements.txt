@@ -1,0 +1,34 @@
+# Web Deep Research 依存関係
+
+# バックエンド
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.4.2
+python-dotenv==1.0.0
+httpx==0.25.0
+
+# データベース
+redis==5.0.1
+
+# ウェブクローリング
+selenium==4.15.2
+beautifulsoup4==4.12.2
+webdriver-manager==4.0.1
+
+# AI・NLP
+langchain==0.0.335
+langchain-community==0.0.10
+langchain-core==0.1.1
+google-generativeai==0.3.1
+
+# GUI
+PyQt6==6.6.0
+PyQt6-WebEngine==6.6.0
+
+# ユーティリティ
+nest-asyncio==1.5.8
+prometheus-client==0.17.1
+flask==3.0.0
+
+# テスト
+pytest==7.4.3 

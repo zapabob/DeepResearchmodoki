@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DeepResearch</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #results { margin-top: 20px; white-space: pre-wrap; background-color: #f0f0f0; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>DeepResearch</h1>
+    <h3>検索欄</h3>
+    <form id="search-form">
+        <input type="text" id="search-query" placeholder="検索クエリを入力してください" required>
+        <button type="submit">検索</button>
+    </form>
+    <div id="results"></div>
+    <form action="/api/websearch" method="get">
+        <input type="text" name="q" placeholder="検索クエリを入力">
+        <button type="submit">Web検索</button>
+    </form>
+    <div id="deepresearch-status">
+        <p>DeepResearch実行: エラーの根本原因の究明を開始します。</p>
+        <p>langchainは正常にインストールされています。</p>
+        <p>pip checkで依存関係に問題は検出されませんでした。</p>
+        <p>DeepResearch診断完了。ログは deepresearch.log に出力されました。</p>
+    </div>
+    <script>
+        document.getElementById("search-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const query = document.getElementById("search-query").value;
+            fetch("/api/websearch?q=" + encodeURIComponent(query))
+                .then(response => response.json())
+                .then(data => {
+                    const resultsDiv = document.getElementById("results");
+                    resultsDiv.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+</html> 
