@@ -2,7 +2,8 @@ import networkx as nx
 
 class GraphService:
     def __init__(self):
-        pass
+        # Initialize an empty graph instance for later use
+        self.graph = nx.Graph()
 
     async def analyze(self, data):
         # ダミー実装のため、与えられたデータをそのまま返す
