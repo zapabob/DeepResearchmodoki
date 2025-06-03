@@ -272,7 +272,7 @@ async def health():
     """
     サーバーの健康状態を確認します。
     """
-    return {"status": "ok"}
+    return {"status": "healthy"}
 
 @app.get("/")
 async def index():
