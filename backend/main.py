@@ -21,7 +21,7 @@ from pydantic import BaseModel
 
 # サービスのインポート
 from backend.services.crawler import CrawlerService, SearchResult
-from backend.services.gemini import GeminiService
+from backend.services import get_ai_service
 from backend.services.graph import GraphService
 from backend.services.cot_deepresearch import CoTDeepResearchService
 
@@ -79,7 +79,7 @@ class SearchResponse(BaseModel):
 
 # サービスのインスタンス
 crawler_service = CrawlerService()
-gemini_service = GeminiService()
+gemini_service = get_ai_service()
 graph_service = GraphService()
 cot_service = CoTDeepResearchService()
 

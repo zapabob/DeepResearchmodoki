@@ -96,6 +96,9 @@ web-deep-research/
 ```
 # API Keys
 GOOGLE_AISTUDIO_API_KEY=your_gemini_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
+# gemini or openai
+AI_PROVIDER=gemini
 
 # Backend Settings
 BACKEND_PORT=8002
@@ -111,6 +114,7 @@ NEXT_PUBLIC_API_URL=http://localhost:8002
 ```
 NEXT_PUBLIC_API_URL=http://localhost:8002
 NODE_ENV=development
+AI_PROVIDER=gemini
 ```
 
 ### インストール
@@ -205,6 +209,10 @@ npm install --force
 ### Gemini APIのエラー
 
 Gemini APIに関するエラーが発生した場合は、`.env`ファイルの`GOOGLE_AISTUDIO_API_KEY`が正しく設定されていることを確認してください。
+
+### OpenAI APIのエラー
+
+OpenAIを使用する場合は、`.env`の`OPENAI_API_KEY`と`AI_PROVIDER=openai`が設定されているか確認してください。
 
 ## ライセンス
 

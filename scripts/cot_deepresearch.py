@@ -14,7 +14,7 @@ import nest_asyncio
 
 # バックエンドサービスのインポート
 from backend.services.crawler import CrawlerService
-from backend.services.gemini import GeminiService
+from backend.services import get_ai_service
 
 # 非同期処理の設定
 nest_asyncio.apply()
@@ -54,7 +54,7 @@ class CoTDeepResearch:
             
             # Chain-of-Thought推論の実行
             self.logger.info('Chain-of-Thought推論を開始します。')
-            gemini = GeminiService()
+            gemini = get_ai_service()
             
             # CoTプロンプトの作成
             prompt = self._create_cot_prompt(query, combined_text, depth)

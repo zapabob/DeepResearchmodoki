@@ -12,6 +12,7 @@ if root_dir not in sys.path:
 
 # バックエンドサービスのインポート
 from scripts.cot_deepresearch import CoTDeepResearch
+from backend.services.langgraph_utils import generate_graph_from_text
 
 class CoTDeepResearchService:
     """
@@ -51,11 +52,17 @@ class CoTDeepResearchService:
         try:
             # 基本クラスのexecuteメソッドを呼び出す
             result = await self.cot_deepresearch.execute(query, max_pages, depth)
-            
+
             # 言語情報を追加
             if "metadata" in result:
                 result["metadata"]["language"] = language
-            
+
+            # 生成した分析からLangGraphでグラフ生成を試みる
+            analysis_text = result.get("analysis", "")
+            graph = generate_graph_from_text(str(analysis_text))
+            if graph is not None:
+                result["langgraph"] = graph
+
             return result
             
         except Exception as e:
