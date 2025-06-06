@@ -2,7 +2,9 @@ from fastapi import APIRouter, HTTPException
 from typing import Dict, Any
 from pydantic import BaseModel
 from app.services.crawler_service import CrawlerService  # ウェブクロール処理用
-from app.services.gemini_service import GeminiService    # Geminiによるテキスト分析用
+from app.services.openai_service import OpenAIService  # for openai
+from app.services.gemini_service import GeminiService
+import os
 from app.services.googleai_service import GoogleAIService  # Google AIによる追加インサイト取得用
 from app.services.graph_service import GraphService        # ナレッジグラフ生成用
 
@@ -13,7 +15,7 @@ router = APIRouter()
 
 # サービスのインスタンス化
 crawler_service = CrawlerService()
-gemini_service = GeminiService()
+gemini_service = OpenAIService() if os.getenv("AI_PROVIDER") == "openai" else GeminiService()
 graph_service = GraphService()
 googleai_service = GoogleAIService()
 
